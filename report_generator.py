@@ -14,7 +14,7 @@ class ReportGenerator:
 
     def _get_dmesg_output(self):
         try:
-            return subprocess.check_output(['dmesg'], stderr=subprocess.STDOUT).decode('utf-8')
+            return subprocess.check_output(['dmesg', '-T'], stderr=subprocess.STDOUT).decode('utf-8')
         except subprocess.CalledProcessError as e:
             print("Failed to execute dmesg. Please ensure you have the necessary permissions.")
             print("Consider running the script with sudo or providing a file with dmesg output.")
