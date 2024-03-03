@@ -21,6 +21,10 @@ This command will parse the `dmesg` log for UFW block entries and generate a sum
 - Versatile reporting: Generate summaries by day, month, week, or year.
 - No external dependencies: Utilizes Python’s standard library.
 
+## Configuration
+
+Edit `config.py` for Locale and Date formatting 
+
 ## Requirements
 - Python 3.x
 - Linux environment with UFW logs available through `dmesg`

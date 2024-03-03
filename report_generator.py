@@ -2,6 +2,11 @@ import subprocess
 import re
 from datetime import datetime, timedelta
 from collections import Counter
+from config import LOCALE_LANG, DATE_FORMAT
+
+import locale
+
+locale.setlocale(locale.LC_TIME, LOCALE_LANG)
 
 class ReportGenerator:
     def __init__(self):
@@ -30,7 +35,7 @@ class ReportGenerator:
         filtered_logs = []
         for log in logs:
             log_date, ip = log[0], log[1]
-            log_datetime = datetime.strptime(log_date, '%a %b %d %H:%M:%S %Y')
+            log_datetime = datetime.strptime(log_date, DATE_FORMAT)
             if period == 'day' and now.date() == log_datetime.date():
                 filtered_logs.append(ip)
             elif period == 'month' and now.month == log_datetime.month and now.year == log_datetime.year:
